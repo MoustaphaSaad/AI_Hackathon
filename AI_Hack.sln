@@ -1,0 +1,24 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AI_Hack", "AI_Hack\AI_Hack\AI_Hack.csproj", "{73DA315F-30AB-44B7-ACEB-F60D1C2E9D74}"
+EndProject
+Project("{96E2B04D-8817-42C6-938A-82C39BA4D311}") = "AI_HackContent", "AI_Hack\AI_HackContent\AI_HackContent.contentproj", "{C7F034D7-5233-4DAA-AF6A-4F5FB2DF5158}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{73DA315F-30AB-44B7-ACEB-F60D1C2E9D74}.Debug|x86.ActiveCfg = Debug|x86
+		{73DA315F-30AB-44B7-ACEB-F60D1C2E9D74}.Debug|x86.Build.0 = Debug|x86
+		{73DA315F-30AB-44B7-ACEB-F60D1C2E9D74}.Release|x86.ActiveCfg = Release|x86
+		{73DA315F-30AB-44B7-ACEB-F60D1C2E9D74}.Release|x86.Build.0 = Release|x86
+		{C7F034D7-5233-4DAA-AF6A-4F5FB2DF5158}.Debug|x86.ActiveCfg = Debug|x86
+		{C7F034D7-5233-4DAA-AF6A-4F5FB2DF5158}.Release|x86.ActiveCfg = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
