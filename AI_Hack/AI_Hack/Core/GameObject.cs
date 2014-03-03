@@ -12,7 +12,7 @@ using Microsoft.Xna.Framework.Media;
 
 namespace AI_Hack.Core
 {
-    class GameObject : VisualObject
+    class GameObject : VisualObject,IComponent
     {
         //Object Attributes
         protected List<GameObject> childList;
@@ -65,26 +65,26 @@ namespace AI_Hack.Core
             childList.Add(val);
         }
 
-        public virtual void input()
+        public virtual void Input()
         {
             foreach (GameObject obj in childList)
-                obj.input();
+                obj.Input();
             if(BehaviourComp != null)
                 BehaviourComp.Input();
         }
 
-        public virtual void update()
+        public virtual void Update()
         {
             foreach (GameObject obj in childList)
-                obj.update();
+                obj.Update();
             if (BehaviourComp != null)
                 BehaviourComp.Update();
         }
 
-        public virtual void draw()
+        public virtual void Draw()
         {
             foreach (GameObject obj in childList)
-                obj.draw();
+                obj.Draw();
             if(RenderComp != null)
                 RenderComp.Draw();
         }

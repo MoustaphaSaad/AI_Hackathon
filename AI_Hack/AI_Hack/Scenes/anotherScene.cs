@@ -35,19 +35,19 @@ namespace AI_Hack.Scenes
         {
             base.setupScene();
         }
-        public override void input()
+        public override void Input()
         {
             if (InputManager.Instance.Keyboard.IsKeyDown(Keys.S))
                 uManager.SManager.setCurrent("TestScene");
-            base.input();
+            base.Input();
         }
-        public override void update()
+        public override void Update()
         {
-            base.update();
+            base.Update();
         }
-        public override void draw()
+        public override void Draw()
         {
-            base.draw();
+            base.Draw();
         }
     }
 }

@@ -89,18 +89,18 @@ namespace AI_Hack.Managers
             if (!nInit)
                 this.init();
             if(currentScene != null)
-                currentScene.input();
+                currentScene.Input();
         }
         public void update()
         {
             InputManager.Instance.Update();
             if (currentScene != null)
-                currentScene.update();
+                currentScene.Update();
         }
         public void draw()
         {
             if (currentScene != null)
-                currentScene.draw();
+                currentScene.Draw();
         }
     }
 }
