@@ -28,12 +28,12 @@ namespace AI_Hack.Core
             parent = null;
         }
         //member functions
-        public void Input()
+        public virtual void Input()
         {
 
         }
 
-        public void Update()
+        public virtual void Update()
         {
 
         }

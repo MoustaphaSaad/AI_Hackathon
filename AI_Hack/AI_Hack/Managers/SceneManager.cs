@@ -19,6 +19,17 @@ namespace AI_Hack.Managers
             current = null;
             Scenes = new Dictionary<string, Scene>();
         }
+        public Scene this[string val]
+        {
+            get
+            {
+                if(Scenes.ContainsKey(val))
+                    return Scenes[val];
+                else
+                    return null;
+            }
+        }
+
         public void addScene(Scene val)
         {
             Scenes.Add(val.Name, val);

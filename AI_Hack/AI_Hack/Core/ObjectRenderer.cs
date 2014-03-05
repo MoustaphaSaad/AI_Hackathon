@@ -13,7 +13,7 @@ using AI_Hack.Managers;
 
 namespace AI_Hack.Core
 {
-    sealed class ObjectRenderer:IComponent
+    class ObjectRenderer:IComponent
     {
         //Object Attributes
         protected Texture2D texture;
@@ -56,7 +56,7 @@ namespace AI_Hack.Core
         }
 
         //member functions
-        public void Draw()
+        public virtual void Draw()
         {
             UManager.Instance.Sprite.Begin();
             UManager.Instance.Sprite.Draw(texture, DestRect, srcRect, Color.White);
