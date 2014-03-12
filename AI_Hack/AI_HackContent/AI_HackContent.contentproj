@@ -42,12 +42,28 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IL.png">
-      <Name>IL</Name>
+    <Compile Include="Tank\GreenGun.png">
+      <Name>GreenGun</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Tank\GreenTank.png">
+      <Name>GreenTank</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Tank\OrangeGun.png">
+      <Name>OrangeGun</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Tank\OrangeTank.png">
+      <Name>OrangeTank</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\$(XnaFrameworkVersion)\Microsoft.Xna.GameStudio.ContentPipeline.targets" />
   <!--  To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

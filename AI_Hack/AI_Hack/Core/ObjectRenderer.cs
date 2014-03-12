@@ -9,29 +9,17 @@ using Microsoft.Xna.Framework.GamerServices;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
+using AI_Hack.Core;
 using AI_Hack.Managers;
 
 namespace AI_Hack.Core
 {
-    class ObjectRenderer:IComponent
+    abstract class ObjectRenderer:IDrawable
     {
         //Object Attributes
-        protected Texture2D texture;
-        protected Rectangle DestRect;
-        protected Rectangle srcRect;
         protected GameObject parent;
 
         //Getters & Setters
-        public Texture2D Texture
-        {
-            get { return texture; }
-            set {
-                texture = value;
-                if(parent !=null)
-                    DestRect = new Rectangle((int)parent.Position.X, (int)parent.Position.X, texture.Width, texture.Height);
-                srcRect = new Rectangle(0, 0, texture.Width, texture.Height);
-            }
-        }
 
         public GameObject Parent
         {
@@ -40,35 +28,17 @@ namespace AI_Hack.Core
         }
 
         //Constructors
-        public ObjectRenderer(GameObject p, Texture2D tex)
+        public ObjectRenderer(GameObject p)
         {
             parent = p;
-            texture = tex;
-            DestRect = new Rectangle((int)parent.Position.X, (int)parent.Position.X, texture.Width, texture.Height);
-            srcRect = new Rectangle(0, 0, texture.Width, texture.Height);
         }
         public ObjectRenderer()
         {
-            texture = null;
             parent = null;
-            DestRect = new Rectangle();
-            srcRect = new Rectangle();
         }
 
         //member functions
-        public virtual void Draw()
-        {
-            UManager.Instance.Sprite.Begin();
-            UManager.Instance.Sprite.Draw(texture, DestRect, srcRect, Color.White);
-            UManager.Instance.Sprite.End();
-        }
-        public void Input()
-        {
-            throw new NotImplementedException();
-        }
-        public void Update()
-        {
-            throw new NotImplementedException();
-        }
+        public abstract void Draw();
+        public abstract void Draw(Vector2 position);
     }
 }

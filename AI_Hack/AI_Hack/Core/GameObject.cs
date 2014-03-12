@@ -12,11 +12,14 @@ using Microsoft.Xna.Framework.Media;
 
 namespace AI_Hack.Core
 {
-    class GameObject : VisualObject,IComponent
+    class GameObject : VisualObject, IUpdatable,IDrawable
+
     {
         //Object Attributes
         protected List<GameObject> childList;
-        private IComponent RenderComp, BehaviourComp;
+        private ObjectRenderer RenderComp;
+        private ObjectBehaviour BehaviourComp;
+        protected GameObject parent;
 
         //Getters & Setters
         public GameObject this[int ix]{
@@ -34,16 +37,22 @@ namespace AI_Hack.Core
             get { return childList.Count; }
         }
 
-        public IComponent Renderer
+        public ObjectRenderer Renderer
         {
             get { return RenderComp; }
             set { if (value != null) RenderComp = value; }
         }
 
-        public IComponent Behaviour
+        public ObjectBehaviour Behaviour
         {
             get { return BehaviourComp; }
             set { if (value != null) BehaviourComp = value; }
+        }
+
+        public GameObject Parent
+        {
+            get { return parent; }
+            set { parent = value; }
         }
 
         //Constructors
@@ -51,17 +60,20 @@ namespace AI_Hack.Core
             childList = new List<GameObject>();
             RenderComp = null;
             BehaviourComp = null;
+            parent = null;
         }
         public GameObject():base()
         {
             childList = new List<GameObject>();
             RenderComp = null;
             BehaviourComp = null;
+            parent = null;
         }
 
         //memberFunctions
         public void addChild(GameObject val)
         {
+            val.parent = this;
             childList.Add(val);
         }
 
@@ -83,10 +95,27 @@ namespace AI_Hack.Core
 
         public virtual void Draw()
         {
-            foreach (GameObject obj in childList)
-                obj.Draw();
+            
             if(RenderComp != null)
                 RenderComp.Draw();
+            foreach (GameObject obj in childList)
+            {
+                Vector2 pos = obj.Position + this.Position;
+                obj.Draw(pos);
+                
+            }
+        }
+        public virtual void Draw(Vector2 position)
+        {
+
+            if (RenderComp != null)
+                RenderComp.Draw(position);
+            foreach (GameObject obj in childList)
+            {
+                Vector2 pos = obj.Position +position;
+                obj.Draw(pos);
+
+            }
         }
     }
 }

@@ -21,6 +21,7 @@ namespace AI_Hack.Core
         public Vector2 Position
         {
             get { return mPosition; }
+            set { mPosition = value; }
         }
 
         //Constructors

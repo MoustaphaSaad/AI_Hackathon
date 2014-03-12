@@ -25,6 +25,8 @@ namespace AI_Hack.Managers
         private bool nInit;
         private Game1 game;
 
+        int winWidth, winHeight;
+
         public SpriteBatch Sprite
         {
             get { return spriteBatch; }
@@ -48,6 +50,28 @@ namespace AI_Hack.Managers
         {
             get { return sManager; }
         }
+        public int WinWidth
+        {
+            get { return winWidth; }
+            set {
+                winWidth = value;
+                gxManager.PreferredBackBufferWidth = value;
+                game.Graphics.PreferredBackBufferWidth = value;
+                game.Graphics.ApplyChanges();
+            }
+        }
+        public int WinHeight
+        {
+            get { return winHeight; }
+            set
+            {
+                winHeight = value;
+                gxManager.PreferredBackBufferHeight = value;
+                game.Graphics.PreferredBackBufferHeight = value;
+                game.Graphics.ApplyChanges();
+            }
+        }
+
         public UManager(Game1 g)
         {
             currentScene = null;
@@ -56,9 +80,12 @@ namespace AI_Hack.Managers
             spriteBatch = game.Sprite ;
             gxManager = game.Graphics;
             cManager = game.Content;
+            winWidth = gxManager.PreferredBackBufferWidth;
+            winHeight = gxManager.PreferredBackBufferHeight;
             sManager = new SceneManager();
             instance = this;
             extractScenes();
+            
         }
 
         private void extractScenes()

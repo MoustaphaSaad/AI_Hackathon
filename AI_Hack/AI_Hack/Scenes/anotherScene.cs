@@ -26,9 +26,7 @@ namespace AI_Hack.Scenes
 
         public override void init()
         {
-            GameObject x = new GameObject(new Vector2(0, 0));
-            x.Renderer = new ObjectRenderer(x, uManager.CManager.Load<Texture2D>("IL"));
-            this.addChild(x);
+           
             base.init();
         }
         public override void setupScene()
@@ -43,6 +41,8 @@ namespace AI_Hack.Scenes
         }
         public override void Update()
         {
+            UManager.Instance.WinHeight = 800;
+            UManager.Instance.WinWidth = 600;
             base.Update();
         }
         public override void Draw()

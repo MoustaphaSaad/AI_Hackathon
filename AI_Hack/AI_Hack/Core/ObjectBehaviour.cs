@@ -5,7 +5,7 @@ using System.Text;
 
 namespace AI_Hack.Core
 {
-    class ObjectBehaviour:IComponent
+    abstract class ObjectBehaviour:IUpdatable
     {
         //Object Attributes
         private GameObject parent;
@@ -28,19 +28,7 @@ namespace AI_Hack.Core
             parent = null;
         }
         //member functions
-        public virtual void Input()
-        {
-
-        }
-
-        public virtual void Update()
-        {
-
-        }
-
-        public void Draw()
-        {
-            throw new NotImplementedException();
-        }
+        public abstract void Input();
+        public abstract void Update();
     }
 }

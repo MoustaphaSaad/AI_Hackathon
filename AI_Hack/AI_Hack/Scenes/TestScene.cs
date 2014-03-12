@@ -11,6 +11,7 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 using AI_Hack.Managers;
 using AI_Hack.Core;
+using AI_Hack.Simulator;
 
 namespace AI_Hack.Scenes
 {
@@ -26,9 +27,15 @@ namespace AI_Hack.Scenes
 
         public override void init()
         {
-            GameObject x = new GameObject(new Vector2(100, 100));
-            x.Renderer = new ObjectRenderer(x, uManager.CManager.Load<Texture2D>("IL"));
-            this.addChild(x);
+            GameObject Gun = new GameObject(new Vector2(0, 0));
+            Gun.Renderer = new TankGun(Gun);
+            GameObject Tank = new GameObject(new Vector2(100, 100));
+            Tank.Renderer = new TankRenderer(Tank);
+            Tank.addChild(Gun);
+            this.addChild(Tank);
+
+            Map mp = new Map(UManager.Instance.WinWidth, UManager.Instance.WinHeight, 48, 48);
+            mp.LoadMap("Maps/Map.txt");
             base.init();
         }
         public override void setupScene()
@@ -43,6 +50,7 @@ namespace AI_Hack.Scenes
         }
         public override void Update()
         {
+            
             base.Update();
         }
         public override void Draw()
