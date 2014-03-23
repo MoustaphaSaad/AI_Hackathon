@@ -115,6 +115,8 @@
     <Compile Include="Core\Scene.cs" />
     <Compile Include="Core\IUpdatable.cs" />
     <Compile Include="Core\VisualObject.cs" />
+    <Compile Include="Loader\Environment.cs" />
+    <Compile Include="Loader\Resource.cs" />
     <Compile Include="Managers\InputManager.cs" />
     <Compile Include="Managers\SceneManager.cs" />
     <Compile Include="Managers\UManager.cs" />
@@ -123,8 +125,6 @@
     <Compile Include="Game1.cs" />
     <Compile Include="Scenes\anotherScene.cs" />
     <Compile Include="Scenes\TestScene.cs" />
-    <Compile Include="Simulator\Map.cs" />
-    <Compile Include="Simulator\MapRenderer.cs" />
     <Compile Include="Simulator\TankGun.cs" />
     <Compile Include="Simulator\TankRenderer.cs" />
   </ItemGroup>

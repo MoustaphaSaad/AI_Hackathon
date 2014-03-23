@@ -12,12 +12,13 @@ using Microsoft.Xna.Framework.Media;
 using AI_Hack.Managers;
 using AI_Hack.Core;
 using AI_Hack.Simulator;
+using AI_Hack.Loader;
 
 namespace AI_Hack.Scenes
 {
     class TestScene:Scene
     {
-        
+        EnvironmentX x;
         public TestScene(string n)
             : base(n)
         {
@@ -33,10 +34,10 @@ namespace AI_Hack.Scenes
             Tank.Renderer = new TankRenderer(Tank);
             Tank.addChild(Gun);
             this.addChild(Tank);
-
-            Map mp = new Map(UManager.Instance.WinWidth, UManager.Instance.WinHeight, 48, 48);
-            mp.LoadMap("Maps/Map.txt");
+            x = EnvironmentX.Load("Maps/ij.txt");
             base.init();
+            uManager.WinHeight = 576;
+            uManager.WinWidth = 768;
         }
         public override void setupScene()
         {
@@ -55,6 +56,7 @@ namespace AI_Hack.Scenes
         }
         public override void Draw()
         {
+            x.Draw();
             base.Draw();
         }
     }
