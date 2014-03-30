@@ -14,7 +14,7 @@ using AI_Hack.Managers;
 
 namespace AI_Hack.Core
 {
-    abstract class ObjectRenderer:IDrawable
+    public abstract class ObjectRenderer:IDrawable
     {
         //Object Attributes
         protected GameObject parent;
@@ -40,5 +40,8 @@ namespace AI_Hack.Core
         //member functions
         public abstract void Draw();
         public abstract void Draw(Vector2 position);
+
+        public abstract Color[] getData();
+        public abstract Rectangle getBoundingRectangle();
     }
 }

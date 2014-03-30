@@ -12,7 +12,7 @@ using Microsoft.Xna.Framework.Media;
 
 namespace AI_Hack.Managers
 {
-    class InputManager
+    public class InputManager
     {
         private KeyboardState keyboard;
         private MouseState mouse;

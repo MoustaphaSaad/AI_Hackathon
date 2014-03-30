@@ -19,21 +19,26 @@ namespace AI_Hack.Scenes
     class TestScene:Scene
     {
         EnvironmentX x;
+        MeinGun Gun;
+        MeinTank tank;
         public TestScene(string n)
             : base(n)
         {
             clearColor = Color.CornflowerBlue;
             uManager.SManager.setCurrent(this);
+            uManager.isMouseVisible = true;
         }
 
         public override void init()
         {
-            GameObject Gun = new GameObject(new Vector2(0, 0));
-            Gun.Renderer = new TankGun(Gun);
-            GameObject Tank = new GameObject(new Vector2(100, 100));
-            Tank.Renderer = new TankRenderer(Tank);
-            Tank.addChild(Gun);
-            this.addChild(Tank);
+            Gun = new MeinGun();
+            tank = new MeinTank();
+            Gun.Position = new Vector2(0,0);
+            tank.Position = new Vector2(300, 300);
+            //this.addChild(tank);
+            //this.addChild(Gun);
+            Tank me = new Tank(new Vector2(200, 200), uManager.CManager.Load<Texture2D>("Tank//OrangeTank"), 100, Gun);
+            this.addChild(me);
             x = EnvironmentX.Load("Maps/ij.txt");
             base.init();
             uManager.WinHeight = 576;
@@ -41,17 +46,28 @@ namespace AI_Hack.Scenes
         }
         public override void setupScene()
         {
+
             base.setupScene();
         }
         public override void Input()
         {
+
+
             if (InputManager.Instance.Keyboard.IsKeyDown(Keys.A))
-                uManager.SManager.setCurrent("anotherScene");
+                Gun.Position = new Vector2(Gun.Position.X - 1, Gun.Position.Y);
+            if (InputManager.Instance.Keyboard.IsKeyDown(Keys.D))
+                Gun.Position = new Vector2(Gun.Position.X + 1, Gun.Position.Y);
+            if (InputManager.Instance.Keyboard.IsKeyDown(Keys.S))
+                Gun.Position = new Vector2(Gun.Position.X, Gun.Position.Y+1);
+            if (InputManager.Instance.Keyboard.IsKeyDown(Keys.W))
+                Gun.Position = new Vector2(Gun.Position.X, Gun.Position.Y-1);
             base.Input();
         }
         public override void Update()
         {
-            
+
+            if (Gun.isCollided(tank))
+                Gun.Position = new Vector2(100, 100);
             base.Update();
         }
         public override void Draw()

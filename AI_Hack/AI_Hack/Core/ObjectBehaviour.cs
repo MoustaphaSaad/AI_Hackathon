@@ -5,7 +5,7 @@ using System.Text;
 
 namespace AI_Hack.Core
 {
-    abstract class ObjectBehaviour:IUpdatable
+    public abstract class ObjectBehaviour:IUpdatable
     {
         //Object Attributes
         private GameObject parent;

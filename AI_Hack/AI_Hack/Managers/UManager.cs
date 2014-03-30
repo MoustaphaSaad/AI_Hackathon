@@ -14,7 +14,7 @@ using System.Reflection;
 
 namespace AI_Hack.Managers
 {
-    class UManager
+    public class UManager
     {
         public Scene currentScene;
         private SpriteBatch spriteBatch;
@@ -70,6 +70,15 @@ namespace AI_Hack.Managers
                 game.Graphics.PreferredBackBufferHeight = value;
                 game.Graphics.ApplyChanges();
             }
+        }
+        public bool isMouseVisible
+        {
+            get { return game.IsMouseVisible; }
+            set { game.IsMouseVisible = value; }
+        }
+        public Game Game
+        {
+            get { return game; }
         }
 
         public UManager(Game1 g)

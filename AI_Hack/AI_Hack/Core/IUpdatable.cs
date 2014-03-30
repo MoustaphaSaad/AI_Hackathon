@@ -5,7 +5,7 @@ using System.Text;
 
 namespace AI_Hack.Core
 {
-    interface IUpdatable
+    public interface IUpdatable
     {
         void Input();
         void Update();

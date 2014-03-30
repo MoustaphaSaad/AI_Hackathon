@@ -66,5 +66,16 @@ namespace AI_Hack.Core
 
             Draw();
         }
+
+        public override Color[] getData()
+        {
+            Color[] d = new Color[texture.Width * texture.Height];
+            texture.GetData(d);
+            return d;
+        }
+        public override Rectangle getBoundingRectangle()
+        {
+            return new Rectangle((int)parent.Position.X,(int) parent.Position.Y, texture.Width, texture.Height);
+        }
     }
 }

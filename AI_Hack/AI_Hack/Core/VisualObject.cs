@@ -12,7 +12,7 @@ using Microsoft.Xna.Framework.Media;
 
 namespace AI_Hack.Core
 {
-    class VisualObject
+    public class VisualObject
     {
         //Object Attributes
         private Vector2 mPosition;

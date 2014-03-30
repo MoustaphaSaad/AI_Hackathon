@@ -5,7 +5,7 @@ using System.Text;
 
 namespace AI_Hack.Core
 {
-    interface IDrawable
+    public interface IDrawable
     {
         void Draw();
     }

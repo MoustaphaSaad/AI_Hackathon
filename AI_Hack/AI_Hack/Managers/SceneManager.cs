@@ -6,7 +6,7 @@ using AI_Hack.Core;
 
 namespace AI_Hack.Managers
 {
-    class SceneManager
+    public class SceneManager
     {
         private Scene current;
         private Dictionary<string, Scene> Scenes;

@@ -13,7 +13,7 @@ using AI_Hack.Managers;
 
 namespace AI_Hack.Core
 {
-    class Scene:GameObject
+    public class Scene:GameObject
     {
         //Class Attributes
         protected Color clearColor;
@@ -54,5 +54,7 @@ namespace AI_Hack.Core
         public virtual void setupScene()
         {
         }
+
+
     }
 }
