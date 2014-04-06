@@ -11,13 +11,13 @@ using AI_Hack.Managers;
 using AI_Hack.Core;
 namespace AI_Hack.Simulator
 {
-    class FireBullet : AffectiveObject
+    class FireBullet : GameObject, IAffectiveObject
     {
         public Vector2 velocity;
         public Vector2 initialPosition;
         public Vector2 direction;
         public float range;
-
+        public float effectValue;
 
 
 
@@ -33,8 +33,6 @@ namespace AI_Hack.Simulator
 
             Renderer = new DefaultRenderer(this, texture);
 
-
-
         }
 
 
@@ -42,6 +40,11 @@ namespace AI_Hack.Simulator
         {
             Parent.Position = ((FireBullet)Parent).Parent.Position + ((FireBullet)Parent).velocity;
         }
+        public void ExecuteEffect(Tank tank)
+        {
+            tank.EffectHealth(effectValue);
+        }
+
 
     }
 }
