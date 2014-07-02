@@ -38,7 +38,7 @@ namespace AI_Hack.Simulator
 
         public override void Update()
         {
-            Parent.Position = ((FireBullet)Parent).Parent.Position + ((FireBullet)Parent).velocity;
+            Parent.transform.position = ((FireBullet)Parent).Parent.transform.position + ((FireBullet)Parent).velocity;
         }
         public void ExecuteEffect(Tank tank)
         {

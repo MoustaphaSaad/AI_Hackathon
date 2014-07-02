@@ -31,6 +31,11 @@ namespace AI_Hack.Core
                     return null;
             }
         }
+        public GameObject Parent
+        {
+            get { return parent; }
+            set { parent = value; }
+        }
 
         public int ChildCount
         {
@@ -49,12 +54,6 @@ namespace AI_Hack.Core
             set { if (value != null) BehaviourComp = value; }
         }
 
-        public GameObject Parent
-        {
-            get { return parent; }
-            set { parent = value; }
-        }
-
         //Constructors
         public GameObject(Vector2 pos):base(pos){
             childList = new List<GameObject>();
@@ -71,13 +70,15 @@ namespace AI_Hack.Core
         }
 
         //memberFunctions
-        public void addChild(GameObject val)
+        public virtual void addChild(GameObject val)
         {
             val.parent = this;
+            val.transform.parent = this.transform;
             childList.Add(val);
         }
         public void removeChild(GameObject obj)
         {
+            obj.transform.parent = null;
             childList[childList.IndexOf(obj)] = null;
         }
 
@@ -113,25 +114,9 @@ namespace AI_Hack.Core
             {
                 if (obj != null)
                 {
-                    Vector2 pos = obj.Position + this.Position;
-                    obj.Draw(pos);
+                    obj.Draw();
                 }
                 
-            }
-        }
-        public virtual void Draw(Vector2 position)
-        {
-
-            if (RenderComp != null)
-                RenderComp.Draw(position);
-            foreach (GameObject obj in childList)
-            {
-                if (obj != null)
-                {
-                    Vector2 pos = obj.Position + position;
-                    obj.Draw(pos);
-                }
-
             }
         }
 

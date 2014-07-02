@@ -19,7 +19,7 @@ namespace AI_Hack.Simulator
 
         public HealthPowerUp(Vector2 position, Texture2D texture, float bonusValue)
         {
-            base.Position = position;
+            base.transform.position = position;
             this.bonusValue = bonusValue;
             Renderer = new DefaultRenderer(this, texture);
         }

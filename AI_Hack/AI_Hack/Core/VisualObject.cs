@@ -15,29 +15,26 @@ namespace AI_Hack.Core
     public class VisualObject
     {
         //Object Attributes
-        private Vector2 mPosition;
+        public Transform transform;
 
         //Getters & Setters
-        public Vector2 Position
-        {
-            get { return mPosition; }
-            set { mPosition = value; }
-        }
+        
 
         //Constructors
         public VisualObject(Vector2 pos)
         {
-            mPosition = pos;
+            transform = new Transform();
+            transform.position = pos;
         }
         public VisualObject()
         {
-            mPosition = new Vector2(0);
+            transform = new Transform();
         }
 
         //Member Functions
         public void Move(Vector2 val)
         {
-            mPosition += val;
+            transform.position += val;
         }
     }
 }

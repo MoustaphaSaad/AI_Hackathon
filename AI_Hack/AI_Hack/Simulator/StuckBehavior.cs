@@ -15,7 +15,7 @@ namespace AI_Hack.Simulator
         { }
         public override void Update()
         {
-            Parent.Position = ((Weapon)Parent).Parent.Position + ((Weapon)Parent).Wrap;
+            Parent.transform.position = ((Weapon)Parent).Parent.transform.position + ((Weapon)Parent).Wrap;
         }
 
     }

@@ -43,10 +43,5 @@ namespace AI_Hack.Simulator
             direction.Normalize();
             return direction;
         }
-        public float Angle
-        {
-            get { return ((TankRenderer)Renderer).Angle; }
-            set { ((TankRenderer)Renderer).Angle = value; }
-        }
     }
 }

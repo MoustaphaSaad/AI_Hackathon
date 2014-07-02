@@ -27,7 +27,7 @@ namespace AI_Hack.Core
             set {
                 texture = value;
                 if(parent !=null)
-                    DestRect = new Rectangle((int)parent.Position.X, (int)parent.Position.X, texture.Width, texture.Height);
+                    DestRect = new Rectangle((int)parent.transform.TransformedPosition.X, (int)parent.transform.TransformedPosition.X, texture.Width, texture.Height);
                 srcRect = new Rectangle(0, 0, texture.Width, texture.Height);
             }
         }
@@ -39,7 +39,7 @@ namespace AI_Hack.Core
             texture = tex;
             if (tex != null)
             {
-                DestRect = new Rectangle((int)parent.Position.X, (int)parent.Position.X, texture.Width, texture.Height);
+                DestRect = new Rectangle((int)parent.transform.TransformedPosition.X, (int)parent.transform.TransformedPosition.X, texture.Width, texture.Height);
                 srcRect = new Rectangle(0, 0, texture.Width, texture.Height);
             }
         }
@@ -54,17 +54,9 @@ namespace AI_Hack.Core
         //member functions
         public override void Draw()
         {
-
             UManager.Instance.Sprite.Begin();
-            UManager.Instance.Sprite.Draw(texture, DestRect, srcRect, Color.White);
+            UManager.Instance.Sprite.Draw(texture, parent.transform.TransformedPosition, srcRect, Color.White,parent.transform.TransformedRotation,parent.transform.origin,parent.transform.TransformedScale,SpriteEffects.None,0f);
             UManager.Instance.Sprite.End();
-        }
-        public override void Draw(Vector2 position)
-        {
-            if (texture != null && parent != null)
-                DestRect = new Rectangle((int)position.X, (int)position.Y, texture.Width, texture.Height);
-
-            Draw();
         }
 
         public override Color[] getData()
@@ -75,7 +67,8 @@ namespace AI_Hack.Core
         }
         public override Rectangle getBoundingRectangle()
         {
-            return new Rectangle((int)parent.Position.X,(int) parent.Position.Y, texture.Width, texture.Height);
+            Vector2 pp = parent.transform.position;
+            return new Rectangle((int)pp.X,(int) pp.Y, texture.Width, texture.Height);
         }
     }
 }

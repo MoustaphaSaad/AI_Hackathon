@@ -16,7 +16,7 @@ using AI_Hack.Loader;
 
 namespace AI_Hack.Scenes
 {
-    class EditScene:Scene
+    class EditScene : Observer.GameScene
     {
         private char current;
         public EditScene(string n):base(n)
@@ -27,6 +27,7 @@ namespace AI_Hack.Scenes
             uManager.WinHeight = 600;
             uManager.WinWidth = 800;
             current = ' ';
+            //uManager.SManager.setCurrent(this);
         }
         public override void Input()
         {
@@ -41,14 +42,14 @@ namespace AI_Hack.Scenes
                 {
                     MeinTank x = new MeinTank();
                     x.Behaviour = new MeinEditBehaviour(x);
-                    x.Position = new Vector2(InputManager.Instance.Mouse.X, InputManager.Instance.Mouse.Y);
+                    x.transform.position = new Vector2(InputManager.Instance.Mouse.X, InputManager.Instance.Mouse.Y);
                     this.addChild(x);
                 }
                 if (current == 'g')
                 {
                     MeinGun x = new MeinGun();
                     x.Behaviour = new MeinEditBehaviour(x);
-                    x.Position = new Vector2(InputManager.Instance.Mouse.X, InputManager.Instance.Mouse.Y);
+                    x.transform.position = new Vector2(InputManager.Instance.Mouse.X, InputManager.Instance.Mouse.Y);
                     this.addChild(x);
                 }
                 

@@ -15,12 +15,18 @@ namespace AI_Hack.Simulator
     public class Tank : GameObject
     {
         private float health;
+        private Sensor msensor;
+        public Sensor sensor
+        {
+            get { return msensor; }
+        }
         public Tank(Vector2 position, Texture2D texture, float health, GameObject Gun) // Weapon
             : base(position)
         {
-            childList.Add(Gun);
+            addChild(Gun);
             this.health = health;
             Renderer = new TankRenderer(texture, this);
+            msensor = new Sensor();
         }
         public void SetBehavior(ObjectBehaviour Brain)
         {
@@ -30,6 +36,7 @@ namespace AI_Hack.Simulator
             : this(position, textures[0], health, Gun)
         {
             ((TankRenderer)Renderer).SetTextures(textures, 1);
+            msensor = new Sensor();
         }
         public GameObject Gun
         {

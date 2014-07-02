@@ -16,11 +16,10 @@ using AI_Hack.Loader;
 
 namespace AI_Hack.Scenes
 {
-    class TestScene:Scene
+    class TestScene:Observer.GameScene
     {
-        EnvironmentX x;
         MeinGun Gun;
-        MeinTank tank;
+        Tank me;
         public TestScene(string n)
             : base(n)
         {
@@ -32,14 +31,11 @@ namespace AI_Hack.Scenes
         public override void init()
         {
             Gun = new MeinGun();
-            tank = new MeinTank();
-            Gun.Position = new Vector2(0,0);
-            tank.Position = new Vector2(300, 300);
-            //this.addChild(tank);
-            //this.addChild(Gun);
-            Tank me = new Tank(new Vector2(200, 200), uManager.CManager.Load<Texture2D>("Tank//OrangeTank"), 100, Gun);
+            Tileset = EnvironmentX.Load("Maps/ij.txt");
+            me = new Tank(Tileset.getTilePosition(5, 5), uManager.CManager.Load<Texture2D>("Tank//OrangeTank"), 100, Gun);
+            this.Attach(me.sensor);
+            Vector2 tileIX = Tileset.PositionToTileIndex(me.transform.position.X, me.transform.position.Y);
             this.addChild(me);
-            x = EnvironmentX.Load("Maps/ij.txt");
             base.init();
             uManager.WinHeight = 576;
             uManager.WinWidth = 768;
@@ -54,25 +50,23 @@ namespace AI_Hack.Scenes
 
 
             if (InputManager.Instance.Keyboard.IsKeyDown(Keys.A))
-                Gun.Position = new Vector2(Gun.Position.X - 1, Gun.Position.Y);
+                me.transform.position = new Vector2(me.transform.position.X - 1, me.transform.position.Y);
             if (InputManager.Instance.Keyboard.IsKeyDown(Keys.D))
-                Gun.Position = new Vector2(Gun.Position.X + 1, Gun.Position.Y);
+                me.transform.position = new Vector2(me.transform.position.X + 1, me.transform.position.Y);
             if (InputManager.Instance.Keyboard.IsKeyDown(Keys.S))
-                Gun.Position = new Vector2(Gun.Position.X, Gun.Position.Y+1);
+                me.transform.position = new Vector2(me.transform.position.X, me.transform.position.Y + 1);
             if (InputManager.Instance.Keyboard.IsKeyDown(Keys.W))
-                Gun.Position = new Vector2(Gun.Position.X, Gun.Position.Y-1);
+                me.transform.position = new Vector2(me.transform.position.X, me.transform.position.Y - 1);
             base.Input();
         }
         public override void Update()
         {
-
-            if (Gun.isCollided(tank))
-                Gun.Position = new Vector2(100, 100);
             base.Update();
+            var map = this.getMap();
         }
         public override void Draw()
         {
-            x.Draw();
+            Tileset.Draw();
             base.Draw();
         }
     }

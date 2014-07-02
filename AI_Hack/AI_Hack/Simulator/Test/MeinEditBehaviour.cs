@@ -26,13 +26,13 @@ namespace AI_Hack.Simulator
         public override void Input()
         {
             if (InputManager.Instance.Mouse.RightButton == ButtonState.Pressed)
-                if (InputManager.Instance.Mouse.X >= Parent.Position.X && InputManager.Instance.Mouse.X <= Parent.Position.X + Parent.Renderer.getBoundingRectangle().Width)
-                    if (InputManager.Instance.Mouse.Y >= Parent.Position.Y && InputManager.Instance.Mouse.Y <= Parent.Position.Y + Parent.Renderer.getBoundingRectangle().Height)
+                if (InputManager.Instance.Mouse.X >= Parent.transform.position.X && InputManager.Instance.Mouse.X <= Parent.transform.position.X + Parent.Renderer.getBoundingRectangle().Width)
+                    if (InputManager.Instance.Mouse.Y >= Parent.transform.position.Y && InputManager.Instance.Mouse.Y <= Parent.transform.position.Y + Parent.Renderer.getBoundingRectangle().Height)
                         Parent.Parent.removeChild(Parent);
 
             if (InputManager.Instance.Mouse.LeftButton == ButtonState.Pressed && InputManager.Instance.Keyboard.IsKeyDown(Keys.LeftShift))
-                if(InputManager.Instance.Mouse.X >= Parent.Position.X && InputManager.Instance.Mouse.X<= Parent.Position.X+Parent.Renderer.getBoundingRectangle().Width)
-                    if (InputManager.Instance.Mouse.Y >= Parent.Position.Y && InputManager.Instance.Mouse.Y <= Parent.Position.Y+Parent.Renderer.getBoundingRectangle().Height)
+                if (InputManager.Instance.Mouse.X >= Parent.transform.position.X && InputManager.Instance.Mouse.X <= Parent.transform.position.X + Parent.Renderer.getBoundingRectangle().Width)
+                    if (InputManager.Instance.Mouse.Y >= Parent.transform.position.Y && InputManager.Instance.Mouse.Y <= Parent.transform.position.Y + Parent.Renderer.getBoundingRectangle().Height)
                         drag = true;
             if (InputManager.Instance.Mouse.LeftButton == ButtonState.Released)
                 drag = false;
@@ -42,7 +42,7 @@ namespace AI_Hack.Simulator
         {
             if (drag)
             {
-                Parent.Position = new Vector2(InputManager.Instance.Mouse.X, InputManager.Instance.Mouse.Y);
+                Parent.transform.position = new Vector2(InputManager.Instance.Mouse.X, InputManager.Instance.Mouse.Y);
             }
         }
     }

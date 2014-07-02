@@ -17,7 +17,7 @@ using AI_Hack.Loader;
 
 namespace AI_Hack.Loader
 {
-    struct Size{
+    public struct Size{
         public int Width,Height;
         public Size(int x, int y)
         {
@@ -25,7 +25,23 @@ namespace AI_Hack.Loader
             Height = y;
         }
     }
-    class EnvironmentX:AI_Hack.Core.IDrawable
+    public enum TileState { Free, Occupied };
+    public class TileX
+    {
+        public TileState state;
+        public double cost;
+        public TileX(double c, TileState s)
+        {
+            cost = c;
+            s = state;
+        }
+        public TileX()
+        {
+            cost = 0;
+            state = TileState.Free;
+        }
+    }
+    public class EnvironmentX:AI_Hack.Core.IDrawable
     {
         public Resource[,] Data { get; private set; }
         public string Name { get; private set; }
@@ -55,6 +71,27 @@ namespace AI_Hack.Loader
             UManager.Instance.Sprite.End();
         }
 
+        public Vector2 MapToTile(Vector2 pos)
+        {
+
+            Vector2 TilePos = new Vector2() ;
+            int absX = (int)(pos.X / Tile.Width);
+            int absY = (int)(pos.Y / Tile.Height);
+            TilePos.X = Tile.Width * absX;
+            TilePos.Y = Tile.Height * absY;
+
+            return TilePos;
+        }
+        public Vector2 getTilePosition(int Tx,int Ty)
+        {
+            return new Vector2(Tile.Width * Tx, Tile.Height * Ty); 
+        }
+        public Vector2 PositionToTileIndex(float x, float y)
+        {
+            int absX = (int)(x / Tile.Width);
+            int absY = (int)(y / Tile.Height);
+            return new Vector2((float)absX, (float)absY);
+        }
 
         public static EnvironmentX Load(string path)
         {

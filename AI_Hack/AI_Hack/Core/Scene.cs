@@ -54,6 +54,11 @@ namespace AI_Hack.Core
         public virtual void setupScene()
         {
         }
+        public override void addChild(GameObject val)
+        {
+            val.Parent = this;
+            childList.Add(val);
+        }
 
 
     }

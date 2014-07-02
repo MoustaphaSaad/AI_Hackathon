@@ -108,12 +108,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Core\GameObject.cs" />
+    <Compile Include="Simulator\GameScene.cs" />
     <Compile Include="Core\IDrawable.cs" />
     <Compile Include="Core\ObjectBehaviour.cs" />
     <Compile Include="Core\DefaultRenderer.cs" />
     <Compile Include="Core\ObjectRenderer.cs" />
+    <Compile Include="Core\Observer.cs" />
     <Compile Include="Core\Scene.cs" />
     <Compile Include="Core\IUpdatable.cs" />
+    <Compile Include="Core\Subject.cs" />
+    <Compile Include="Core\Transform.cs" />
     <Compile Include="Core\VisualObject.cs" />
     <Compile Include="Loader\Environment.cs" />
     <Compile Include="Loader\Resource.cs" />
@@ -128,6 +132,7 @@
     <Compile Include="Scenes\TestScene.cs" />
     <Compile Include="Simulator\IAffectiveObject.cs" />
     <Compile Include="Simulator\FireBullet.cs" />
+    <Compile Include="Simulator\Sensor.cs" />
     <Compile Include="Simulator\Test\MeinEditBehaviour.cs" />
     <Compile Include="Simulator\Test\MeinGun.cs" />
     <Compile Include="Simulator\Test\MeinTank.cs" />

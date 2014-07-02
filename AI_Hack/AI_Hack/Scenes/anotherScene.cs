@@ -11,10 +11,11 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 using AI_Hack.Managers;
 using AI_Hack.Core;
+using AI_Hack.Simulator;
 
 namespace AI_Hack.Scenes
 {
-    class anotherScene : Scene
+    class anotherScene : Observer.GameScene
     {
 
         public anotherScene(string n)

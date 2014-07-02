@@ -39,7 +39,6 @@ namespace AI_Hack.Core
 
         //member functions
         public abstract void Draw();
-        public abstract void Draw(Vector2 position);
 
         public abstract Color[] getData();
         public abstract Rectangle getBoundingRectangle();

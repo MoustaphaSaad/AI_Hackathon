@@ -18,7 +18,7 @@ namespace AI_Hack.Simulator
     {
         public MeinTank()
         {
-            this.Position = new Vector2(0, 0);
+            this.transform.position = new Vector2(0, 0);
             this.Renderer = new MeinTankRenderer(this);
         }
     }
