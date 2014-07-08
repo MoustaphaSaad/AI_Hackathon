@@ -30,11 +30,5 @@ namespace AI_Hack.Core
         {
             transform = new Transform();
         }
-
-        //Member Functions
-        public void Move(Vector2 val)
-        {
-            transform.position += val;
-        }
     }
 }

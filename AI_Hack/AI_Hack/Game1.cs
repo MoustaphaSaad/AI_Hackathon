@@ -82,7 +82,7 @@ namespace AI_Hack
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
             Manager.input();
-            Manager.update();
+            Manager.update(gameTime);
             // TODO: Add your update logic here
             
             base.Update(gameTime);

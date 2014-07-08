@@ -38,7 +38,7 @@ namespace AI_Hack.Simulator
                 drag = false;
 
         }
-        public override void Update()
+        public override void Update(GameTime time)
         {
             if (drag)
             {

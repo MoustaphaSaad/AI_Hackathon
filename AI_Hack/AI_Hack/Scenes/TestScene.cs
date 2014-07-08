@@ -24,7 +24,7 @@ namespace AI_Hack.Scenes
             : base(n)
         {
             clearColor = Color.CornflowerBlue;
-            uManager.SManager.setCurrent(this);
+            //uManager.SManager.setCurrent(this);
             uManager.isMouseVisible = true;
         }
 
@@ -59,9 +59,9 @@ namespace AI_Hack.Scenes
                 me.transform.position = new Vector2(me.transform.position.X, me.transform.position.Y - 1);
             base.Input();
         }
-        public override void Update()
+        public override void Update(GameTime time)
         {
-            base.Update();
+            base.Update(time);
             var map = this.getMap();
         }
         public override void Draw()

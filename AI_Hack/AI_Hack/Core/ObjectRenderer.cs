@@ -11,10 +11,11 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 using AI_Hack.Core;
 using AI_Hack.Managers;
+using System.Xml;
 
 namespace AI_Hack.Core
 {
-    public abstract class ObjectRenderer:IDrawable
+    public abstract class ObjectRenderer:IDrawable,IXMLEncodable
     {
         //Object Attributes
         protected GameObject parent;
@@ -39,6 +40,14 @@ namespace AI_Hack.Core
 
         //member functions
         public abstract void Draw();
+        public virtual XmlElement Encode()
+        {
+            return null;
+        }
+        public virtual void Decode(XmlElement obj)
+        {
+
+        }
 
         public abstract Color[] getData();
         public abstract Rectangle getBoundingRectangle();

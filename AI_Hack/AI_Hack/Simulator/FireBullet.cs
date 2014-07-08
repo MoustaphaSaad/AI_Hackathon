@@ -36,7 +36,7 @@ namespace AI_Hack.Simulator
         }
 
 
-        public override void Update()
+        public override void Update(GameTime time)
         {
             Parent.transform.position = ((FireBullet)Parent).Parent.transform.position + ((FireBullet)Parent).velocity;
         }

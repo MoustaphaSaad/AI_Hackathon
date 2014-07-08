@@ -28,10 +28,6 @@ namespace AI_Hack.Simulator
             Renderer = new TankRenderer(texture, this);
             msensor = new Sensor();
         }
-        public void SetBehavior(ObjectBehaviour Brain)
-        {
-            Behaviour = Brain;
-        }
         public Tank(Vector2 position, List<Texture2D> textures, float health, GameObject Gun)
             : this(position, textures[0], health, Gun)
         {

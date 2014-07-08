@@ -108,6 +108,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Core\GameObject.cs" />
+    <Compile Include="Core\IXMLEncodable.cs" />
+    <Compile Include="Scenes\MainMenu.cs" />
+    <Compile Include="Simulator\Animator.cs" />
     <Compile Include="Simulator\GameScene.cs" />
     <Compile Include="Core\IDrawable.cs" />
     <Compile Include="Core\ObjectBehaviour.cs" />
@@ -142,6 +145,7 @@
     <Compile Include="Simulator\StuckBehavior.cs" />
     <Compile Include="Simulator\Tank.cs" />
     <Compile Include="Simulator\TankRenderer.cs" />
+    <Compile Include="Simulator\WanderBehaviour.cs" />
     <Compile Include="Simulator\Weapon.cs" />
   </ItemGroup>
   <ItemGroup>

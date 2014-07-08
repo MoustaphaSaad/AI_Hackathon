@@ -21,6 +21,7 @@ namespace AI_Hack.Core
         public Transform parent;
         public Vector2 origin;
 
+
         public Vector2 TransformedPosition
         {
             get
@@ -58,6 +59,14 @@ namespace AI_Hack.Core
             rotation = 0;
             scale = new Vector2(1, 1) ;
             parent = null;
+        }
+        public Transform(Transform t)
+        {
+            position = new Vector2(t.position.X,t.position.Y);
+            origin = new Vector2(t.origin.X, t.origin.Y);
+            rotation = t.rotation;
+            scale = new Vector2(t.scale.X, t.scale.Y);
+            parent = t.parent;
         }
         public static float DegToRad(float deg){
             return deg / 57.2957795f;

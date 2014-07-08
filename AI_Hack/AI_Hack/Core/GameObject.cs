@@ -9,16 +9,17 @@ using Microsoft.Xna.Framework.GamerServices;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
-
+using System.Xml;
+using AI_Hack.Simulator;
 namespace AI_Hack.Core
 {
-    public class GameObject : VisualObject, IUpdatable,IDrawable
+    public class GameObject : VisualObject, IUpdatable,IDrawable,IXMLEncodable
 
     {
         //Object Attributes
         protected List<GameObject> childList;
         private ObjectRenderer RenderComp;
-        private ObjectBehaviour BehaviourComp;
+        private Dictionary<string,ObjectBehaviour> Behaviours;
         protected GameObject parent;
 
         //Getters & Setters
@@ -48,25 +49,22 @@ namespace AI_Hack.Core
             set { if (value != null) RenderComp = value; }
         }
 
-        public ObjectBehaviour Behaviour
-        {
-            get { return BehaviourComp; }
-            set { if (value != null) BehaviourComp = value; }
-        }
-
         //Constructors
         public GameObject(Vector2 pos):base(pos){
             childList = new List<GameObject>();
             RenderComp = null;
-            BehaviourComp = null;
+            Behaviours = new Dictionary<string, ObjectBehaviour>();
             parent = null;
+            Behaviours.Add("Animator", new Animator(this));
         }
-        public GameObject():base()
+        public GameObject()
+            : base()
         {
             childList = new List<GameObject>();
             RenderComp = null;
-            BehaviourComp = null;
+            Behaviours = new Dictionary<string, ObjectBehaviour>();
             parent = null;
+            Behaviours.Add("Animator", new Animator(this));
         }
 
         //memberFunctions
@@ -89,20 +87,24 @@ namespace AI_Hack.Core
                 if (childList[i] != null)
                     childList[i].Input();
             }
-            if(BehaviourComp != null)
-                BehaviourComp.Input();
+            foreach (var behaviour in Behaviours)
+            {
+                behaviour.Value.Input();
+            }
             childList.RemoveAll(i=> i == null);
         }
 
-        public virtual void Update()
+        public virtual void Update(GameTime time)
         {
             for (int i = childList.Count - 1; i >= 0; i--)
             {
                 if(childList[i]!=null)
-                    childList[i].Update();
+                    childList[i].Update(time);
             }
-            if (BehaviourComp != null)
-                BehaviourComp.Update();
+            foreach (var behaviour in Behaviours)
+            {
+                behaviour.Value.Update(time);
+            }
         }
 
         public virtual void Draw()
@@ -119,7 +121,45 @@ namespace AI_Hack.Core
                 
             }
         }
+        public void addBehaviour(string name,ObjectBehaviour b){
+            Behaviours.Add(name, b);
+        }
+        public ObjectBehaviour getBehaviour(string name)
+        {
+            if (Behaviours.ContainsKey(name))
+                return Behaviours[name];
+            else
+                return null;
+        }
+        public void move(Vector2 location)
+        {
+            Animator a = getBehaviour("Animator") as Animator;
+            a.move(location);
+        }
+        public void rotate(float rotate)
+        {
+            Animator a = getBehaviour("Animator") as Animator;
+            a.rotate(rotate);
+        }
+        public XmlElement Encode()
+        {
+            /*
+            XmlElement obj = new XmlElement();
+            obj.SetAttribute("Type", "GameObject");
+            obj.SetAttribute("Position", transform.position.ToString());
+            obj.SetAttribute("Rotation", transform.rotation.ToString());
+            obj.SetAttribute("Scale", transform.scale.ToString());
+            if (RenderComp != null)
+                obj.AppendChild(RenderComp.Encode());
+            if (BehaviourComp != null)
+                obj.AppendChild(BehaviourComp.Encode());
+            return obj;*/
+            return null;
+        }
+        public virtual void Decode(XmlElement obj)
+        {
 
+        }
         public bool isCollided(GameObject other)
         {
             Rectangle rectA = RenderComp.getBoundingRectangle();

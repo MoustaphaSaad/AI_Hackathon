@@ -41,14 +41,14 @@ namespace AI_Hack.Scenes
                 if (current == 't')
                 {
                     MeinTank x = new MeinTank();
-                    x.Behaviour = new MeinEditBehaviour(x);
+                    x.addBehaviour("editBehaviour",new MeinEditBehaviour(x));
                     x.transform.position = new Vector2(InputManager.Instance.Mouse.X, InputManager.Instance.Mouse.Y);
                     this.addChild(x);
                 }
                 if (current == 'g')
                 {
                     MeinGun x = new MeinGun();
-                    x.Behaviour = new MeinEditBehaviour(x);
+                    x.addBehaviour("editBehaviour", new MeinEditBehaviour(x));
                     x.transform.position = new Vector2(InputManager.Instance.Mouse.X, InputManager.Instance.Mouse.Y);
                     this.addChild(x);
                 }

@@ -25,7 +25,7 @@ namespace AI_Hack.Simulator
         {
             this.parent = parent;
             this.wrap = wrap;
-            Behaviour = new StuckBehavior(this);
+            this.addBehaviour("stuckBehaviour",new StuckBehavior(this));
             Renderer = new TankRenderer(texture, this);
         }
         public Weapon(Vector2 position, Texture2D texture, GameObject parent) : this(position, texture, parent, new Vector2(0, 0)) { }

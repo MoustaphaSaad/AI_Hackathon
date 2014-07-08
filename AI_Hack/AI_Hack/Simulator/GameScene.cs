@@ -39,10 +39,10 @@ namespace AI_Hack.Core
                 foreach (Observer obj in observers)
                     obj.Update(msg);
             }
-            public override void Update()
+            public override void Update(GameTime time)
             {
                 Notify(getMap());
-                base.Update();
+                base.Update(time);
             }
 
             public TileX[,] getMap()

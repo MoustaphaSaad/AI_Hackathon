@@ -40,11 +40,11 @@ namespace AI_Hack.Scenes
                 uManager.SManager.setCurrent("TestScene");
             base.Input();
         }
-        public override void Update()
+        public override void Update(GameTime time)
         {
             UManager.Instance.WinHeight = 800;
             UManager.Instance.WinWidth = 600;
-            base.Update();
+            base.Update(time);
         }
         public override void Draw()
         {

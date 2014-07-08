@@ -127,11 +127,11 @@ namespace AI_Hack.Managers
             if(currentScene != null)
                 currentScene.Input();
         }
-        public void update()
+        public void update(GameTime time)
         {
             InputManager.Instance.Update();
             if (currentScene != null)
-                currentScene.Update();
+                currentScene.Update(time);
         }
         public void draw()
         {
